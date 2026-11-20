@@ -87,18 +87,17 @@ const PAGES: Record<PageKey, { title: string; content: React.ReactNode }> = {
     title: 'Bored.com — Retro Web Category',
     content: (
       <div className="p-3 space-y-2">
-        <h1 className="text-xl font-bold text-[#000080]">Retro Web Picks (from Bored.com)</h1>
-        <p className="text-sm">A curated corner of nostalgic websites. Visit the original page: <span className="underline text-blue-800">https://www.bored.com/category/retro-web/</span></p>
-        <div className="border border-[#808080] bg-[#E7E1DA] p-2 text-sm">
-          <div className="font-bold mb-1">Suggested stops:</div>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Classic Flash game archives</li>
-            <li>Old web art &amp; pixel galleries</li>
-            <li>GeoCities-style throwbacks</li>
-            <li>Retro internet quizzes and toys</li>
-          </ul>
+        <h1 className="text-xl font-bold text-[#000080]">Retro Web Picks</h1>
+        <p className="text-sm">Nostalgic websites (from Bored.com retro web list):</p>
+        <div className="border border-[#808080] bg-[#E7E1DA] p-2 text-sm space-y-2">
+          <div><a className="text-blue-800 underline" href="https://90s.myretrotvs.com/" target="_blank" rel="noreferrer">90s.myretrotvs.com</a></div>
+          <div><a className="text-blue-800 underline" href="https://windows96.net/" target="_blank" rel="noreferrer">windows96.net</a></div>
+          <div><a className="text-blue-800 underline" href="https://00s.myretrotvs.com/" target="_blank" rel="noreferrer">00s.myretrotvs.com</a></div>
+          <div><a className="text-blue-800 underline" href="https://pavellaptev.me/web-dark-ages/" target="_blank" rel="noreferrer">pavellaptev.me/web-dark-ages</a></div>
+          <div><a className="text-blue-800 underline" href="https://thevintageweb.com/" target="_blank" rel="noreferrer">thevintageweb.com</a></div>
+          <div><a className="text-blue-800 underline" href="https://archive.org/details/vintageai" target="_blank" rel="noreferrer">archive.org/details/vintageai</a></div>
         </div>
-        <div className="text-[11px] text-gray-600">Note: This is a mock page inside MyLife.exe’s retro browser.</div>
+        <div className="text-[11px] text-gray-600">Links open in a new tab (outside MyLife.exe browser).</div>
       </div>
     )
   },
