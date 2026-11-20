@@ -3,6 +3,17 @@ import { useYouTubeStore, YTVideoSummary } from '../store/useYouTubeStore'
 
 type View = 'home' | 'search' | 'player' | 'favorites' | 'mixtapes' | 'history'
 
+const classicVideos: YTVideoSummary[] = [
+  { videoId: 'jNQXAC9IVRw', title: 'Me at the zoo (2005)', channelTitle: 'jawed', thumbnail: 'https://i.ytimg.com/vi/jNQXAC9IVRw/mqdefault.jpg' },
+  { videoId: 'dMH0bHeiRNg', title: 'Evolution of Dance (2006)', channelTitle: 'Judson Laipply', thumbnail: 'https://i.ytimg.com/vi/dMH0bHeiRNg/mqdefault.jpg' },
+  { videoId: 'FzRH3iTQPrk', title: 'Sneezing Baby Panda (2006)', channelTitle: 'screensongs', thumbnail: 'https://i.ytimg.com/vi/FzRH3iTQPrk/mqdefault.jpg' },
+  { videoId: 'EwTZ2xpQwpA', title: 'Chocolate Rain (2007)', channelTitle: 'Tay Zonday', thumbnail: 'https://i.ytimg.com/vi/EwTZ2xpQwpA/mqdefault.jpg' },
+  { videoId: 'g4Hbz2jLxvQ', title: 'Charlie bit my finger (2007)', channelTitle: 'HDCYT', thumbnail: 'https://i.ytimg.com/vi/g4Hbz2jLxvQ/mqdefault.jpg' },
+  { videoId: 'kHmvkRoEowc', title: 'Leave Britney Alone! (2007)', channelTitle: 'Chris Crocker', thumbnail: 'https://i.ytimg.com/vi/kHmvkRoEowc/mqdefault.jpg' },
+  { videoId: 'cP12ZTL1WWw', title: 'The Landlord (2007)', channelTitle: 'Funny Or Die', thumbnail: 'https://i.ytimg.com/vi/cP12ZTL1WWw/mqdefault.jpg' },
+  { videoId: 'J---aiyznGQ', title: 'Keyboard Cat! (2007)', channelTitle: 'Charlie Schmidt', thumbnail: 'https://i.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg' },
+]
+
 export default function YouTubeApp() {
   const [view, setView] = useState<View>('home')
   const [query, setQuery] = useState('')
@@ -103,10 +114,21 @@ export default function YouTubeApp() {
       <div className="flex-1 overflow-auto p-2">
         {view === 'home' && (
           <div>
-            <div className="text-[#cc181e] font-bold mb-2">Welcome to YouTube.exe (retro mode)</div>
-            <p className="text-[12px] mb-3">Search for real YouTube videos above, or browse your Favorites / Mixtapes / History.</p>
-            <div className="text-[11px] text-[#666] border border-[#ccc] bg-white p-2">
-              Tip: set <code>YOUTUBE_API_KEY</code> in server <code>.env</code> for live search. Without it, search will show an error.
+            <div className="text-[#cc181e] font-bold mb-2">Featured Classics (2000s)</div>
+            <p className="text-[12px] mb-3">A few legendary old YouTube videos. Click to play!</p>
+            <div className="space-y-2">
+              {classicVideos.map(v => (
+                <div key={v.videoId} className="flex gap-2 bg-white border border-[#ccc] p-2 cursor-pointer hover:border-[#999]" onClick={() => openVideo(v)}>
+                  <img src={v.thumbnail} alt="" className="w-[120px] h-[90px] object-cover" />
+                  <div className="min-w-0">
+                    <div className="text-[#0033cc] font-bold text-sm">{v.title}</div>
+                    <div className="text-[11px] text-[#666]">{v.channelTitle}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="text-[11px] text-[#666] border border-[#ccc] bg-white p-2 mt-3">
+              Tip: set <code>YOUTUBE_API_KEY</code> in server <code>.env</code> for live search.
             </div>
           </div>
         )}
