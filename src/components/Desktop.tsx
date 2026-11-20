@@ -134,15 +134,7 @@ export default function Desktop() {
       <DesktopIcon
         id="browser"
         label="Internet.exe"
-        icon={
-          <svg width="40" height="40" viewBox="0 0 40 40" className="pixelated" aria-hidden>
-            <rect x="6" y="8" width="28" height="24" fill="#E7E1DA" stroke="#000" strokeWidth="1.5" />
-            <rect x="6" y="8" width="28" height="5" fill="#000080" />
-            <circle cx="10" cy="10.5" r="1.5" fill="#75D5DC" />
-            <rect x="10" y="16" width="20" height="12" fill="#fff" stroke="#000" strokeWidth="1" />
-            <path d="M12 22 Q20 16 28 22" fill="none" stroke="#000080" strokeWidth="1.5" />
-          </svg>
-        }
+        icon={<img src="/internet-icon.png" alt="Internet" width={40} height={40} style={{ imageRendering: 'pixelated' }} />}
         appId="browser"
         title="Internet.exe"
       />
