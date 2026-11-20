@@ -79,12 +79,27 @@ export const useOSStore = create<OSState>()(
       shutdown: false,
       iconPositions: defaultIconPositions,
       openApp: (appId, title) => {
+        // classic click sound (XP-ish)
+        try {
+          const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
+          const osc = ctx.createOscillator()
+          const gain = ctx.createGain()
+          osc.type = 'square'
+          osc.frequency.setValueAtTime(880, ctx.currentTime)
+          osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.06)
+          gain.gain.setValueAtTime(0.08, ctx.currentTime)
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08)
+          osc.connect(gain)
+          gain.connect(ctx.destination)
+          osc.start()
+          osc.stop(ctx.currentTime + 0.1)
+        } catch { /* ignore autoplay restrictions */ }
+
         const existing = get().windows.find(w => w.appId === appId && !w.minimized)
         if (existing) {
           get().focusWindow(existing.id)
           return
         }
-        // if minimized exists, restore first
         const minimized = get().windows.find(w => w.appId === appId && w.minimized)
         if (minimized) {
           get().restoreWindow(minimized.id)
