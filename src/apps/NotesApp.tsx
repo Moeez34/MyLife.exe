@@ -11,7 +11,7 @@ export default function NotesApp() {
   useEffect(() => {
     const n = notes.find(x => x.id === selectedId)
     if (n) {
-      setTitle(n.title)
+      setTitle(n.title === 'Untitled' ? '' : n.title)
       setContent(n.content)
     } else {
       setTitle('')
@@ -75,8 +75,7 @@ export default function NotesApp() {
             className="retro-input mb-1"
             value={title}
             onChange={e => setTitle(e.target.value)}
-            onFocus={() => { if (title === 'Untitled') setTitle('') }}
-            placeholder="Title (Untitled)"
+            placeholder="Untitled"
           />
           <textarea
             className="retro-input flex-1 resize-none"
