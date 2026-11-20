@@ -1,9 +1,25 @@
+import { useEffect, useRef } from 'react'
 import { useOSStore } from './store/useOSStore'
 import BootScreen from './components/BootScreen'
 import Desktop from './components/Desktop'
 
 function App() {
   const { booted, shutdown, setShutdown, setBooted } = useOSStore()
+  const playedRef = useRef(false)
+
+  useEffect(() => {
+    if (booted && !playedRef.current) {
+      playedRef.current = true
+      try {
+        const audio = new Audio('/winxp.mp3')
+        audio.volume = 0.5
+        audio.play().catch(() => {})
+      } catch { /* ignore */ }
+    }
+    if (!booted) {
+      playedRef.current = false
+    }
+  }, [booted])
 
   if (shutdown) {
     return (
