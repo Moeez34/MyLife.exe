@@ -40,9 +40,7 @@ export default function Desktop() {
   return (
     <div className="relative w-full h-full overflow-hidden">
       <div className="desktop-wallpaper" />
-      <div className="scanlines absolute inset-0" />
 
-      {/* Desktop Icons */}
       <DesktopIcon
         id="mycomputer"
         label="My Computer"

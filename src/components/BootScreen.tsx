@@ -6,8 +6,17 @@ export default function BootScreen() {
   const [progress, setProgress] = useState(0)
   const [line, setLine] = useState('Initializing desktop...')
 
+  const playStartupSound = () => {
+    try {
+      const audio = new Audio('/winxp.mp3')
+      audio.volume = 0.5
+      audio.play().catch(() => {})
+    } catch { /* ignore */ }
+  }
+
   useEffect(() => {
     if (bootSkipped) {
+      playStartupSound()
       setBooted(true)
       return
     }
@@ -22,7 +31,11 @@ export default function BootScreen() {
         return p + 4
       })
     }, 80)
-    const t3 = setTimeout(() => setBooted(true), 3200)
+    const t3 = setTimeout(() => {
+      // autoplay may be blocked here; try anyway
+      playStartupSound()
+      setBooted(true)
+    }, 3200)
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
@@ -45,7 +58,7 @@ export default function BootScreen() {
         <div className="mt-4 flex gap-2">
           <button
             className="retro-btn"
-            onClick={() => { setBootSkipped(true); setBooted(true) }}
+            onClick={() => { playStartupSound(); setBootSkipped(true); setBooted(true) }}
           >
             Skip Boot
           </button>
