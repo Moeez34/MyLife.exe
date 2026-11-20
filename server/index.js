@@ -16,20 +16,20 @@ app.post('/api/buddy', async (req, res) => {
     return res.status(400).json({ reply: 'Say something first! ~' })
   }
 
-  const apiKey = process.env.AI_API_KEY
+  const apiKey = process.env.GROQ_API_KEY || process.env.AI_API_KEY
   if (!apiKey) {
-    return res.status(503).json({ reply: null, error: 'No AI_API_KEY set on server.' })
+    return res.status(503).json({ reply: null, error: 'No GROQ_API_KEY (or AI_API_KEY) set on server.' })
   }
 
   try {
-    const r = await fetch('https://api.openai.com/v1/chat/completions', {
+    const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'llama-3.1-8b-instant',
         messages: [
           { role: 'system', content: 'You are Buddy.exe, a friendly, slightly nerdy, nostalgic Y2K desktop companion. Keep replies short (1-3 sentences), playful, and helpful (planning, ideas, journaling, breaking tasks). Use casual tone with tiny emoji sparingly.' },
           { role: 'user', content: message },
@@ -39,7 +39,7 @@ app.post('/api/buddy', async (req, res) => {
     })
     if (!r.ok) {
       const t = await r.text()
-      console.error('OpenAI error:', r.status, t)
+      console.error('Groq error:', r.status, t)
       return res.status(502).json({ reply: null, error: 'AI provider error.' })
     }
     const data = await r.json()
