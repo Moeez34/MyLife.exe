@@ -136,7 +136,7 @@ export default function Desktop() {
       <DesktopIcon
         id="browser"
         label="Internet.exe"
-        icon={<img src="/internet-icon.png" alt="Internet" width={40} height={40} style={{ imageRendering: 'pixelated' }} />}
+        icon={<img src="/internet-icon.ico" alt="Internet" width={40} height={40} style={{ imageRendering: 'pixelated' }} />}
         appId="browser"
         title="Internet.exe"
       />
