@@ -14,6 +14,7 @@ import RecycleBinApp from '../apps/RecycleBinApp'
 import CalculatorApp from '../apps/CalculatorApp'
 import CalendarApp from '../apps/CalendarApp'
 import AlarmApp from '../apps/AlarmApp'
+import YouTubeApp from '../apps/YouTubeApp'
 
 export default function Desktop() {
   const { windows, startMenuOpen } = useOSStore()
@@ -31,6 +32,7 @@ export default function Desktop() {
       case 'calculator': return <CalculatorApp />
       case 'calendar': return <CalendarApp />
       case 'alarm': return <AlarmApp />
+      case 'youtube': return <YouTubeApp />
       default: return <div className="p-4 text-sm">Unknown app</div>
     }
   }
@@ -188,6 +190,13 @@ export default function Desktop() {
         }
         appId="alarm"
         title="Alarm"
+      />
+      <DesktopIcon
+        id="youtube"
+        label="YouTube"
+        icon={<img src="/youtube-icon.png" alt="YouTube" width={40} height={40} style={{ imageRendering: 'pixelated' }} />}
+        appId="youtube"
+        title="YouTube"
       />
       <DesktopIcon
         id="recycle"

@@ -14,6 +14,7 @@ export type AppId =
   | 'calculator'
   | 'calendar'
   | 'alarm'
+  | 'youtube'
 
 export interface WindowState {
   id: string
@@ -68,6 +69,7 @@ const defaultIconPositions: IconPos[] = [
   { id: 'music', x: 20, y: 470 },
   { id: 'browser', x: 20, y: 560 },
   { id: 'calculator', x: 20, y: 650 },
+  { id: 'youtube', x: 120, y: 290 },
   { id: 'calendar', x: 120, y: 20 },
   { id: 'alarm', x: 120, y: 110 },
   { id: 'recycle', x: 120, y: 200 },
