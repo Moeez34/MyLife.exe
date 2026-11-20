@@ -20,8 +20,10 @@ export default function NotesApp() {
   }, [selectedId, notes])
 
   const handleNew = () => {
-    const id = addNote({ title: 'Untitled', content: '' })
+    const id = addNote({ title: '', content: '' })
     setSelectedId(id)
+    setTitle('')
+    setContent('')
     setSavedHint('Created')
     setTimeout(() => setSavedHint(''), 1200)
   }
