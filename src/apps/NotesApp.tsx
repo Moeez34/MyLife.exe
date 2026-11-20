@@ -6,6 +6,7 @@ export default function NotesApp() {
   const [selectedId, setSelectedId] = useState<string | null>(notes[0]?.id || null)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [savedHint, setSavedHint] = useState('')
 
   useEffect(() => {
     const n = notes.find(x => x.id === selectedId)
@@ -21,33 +22,38 @@ export default function NotesApp() {
   const handleNew = () => {
     const id = addNote({ title: 'Untitled', content: '' })
     setSelectedId(id)
+    setSavedHint('Created')
+    setTimeout(() => setSavedHint(''), 1200)
   }
 
   const handleSave = () => {
     if (!selectedId) return
     updateNote(selectedId, { title: title || 'Untitled', content })
+    setSavedHint('Saved')
+    setTimeout(() => setSavedHint(''), 1200)
   }
 
-  // autosave on blur/content change debounce-like simple
+  // autosave
   useEffect(() => {
     if (!selectedId) return
     const t = setTimeout(() => {
       updateNote(selectedId, { title: title || 'Untitled', content })
     }, 500)
     return () => clearTimeout(t)
-  }, [title, content]) // eslint-disable-line
+  }, [title, content, selectedId, updateNote])
 
   return (
     <div className="h-full flex flex-col text-sm">
-      <div className="flex gap-1 mb-2 flex-wrap">
+      <div className="flex gap-1 mb-2 flex-wrap items-center">
         <button className="retro-btn" onClick={handleNew}>New</button>
-        <button className="retro-btn" onClick={handleSave}>Save</button>
+        <button className="retro-btn" onClick={handleSave} disabled={!selectedId}>Save</button>
         <button
           className="retro-btn"
           onClick={() => { if (selectedId) { deleteNote(selectedId); setSelectedId(null) } }}
         >
           Delete
         </button>
+        {savedHint && <span className="text-[11px] text-green-800">{savedHint}</span>}
       </div>
       <div className="flex flex-1 gap-2 min-h-0">
         <div className="w-40 border border-[#808080] bg-white overflow-auto">
