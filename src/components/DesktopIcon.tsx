@@ -11,6 +11,7 @@ const defaultPosMap: Record<string, { x: number; y: number }> = {
   browser: { x: 20, y: 560 },
   calculator: { x: 20, y: 650 },
   youtube: { x: 120, y: 290 },
+  paint: { x: 120, y: 380 },
   calendar: { x: 120, y: 20 },
   alarm: { x: 120, y: 110 },
   recycle: { x: 120, y: 200 },

@@ -15,6 +15,7 @@ import CalculatorApp from '../apps/CalculatorApp'
 import CalendarApp from '../apps/CalendarApp'
 import AlarmApp from '../apps/AlarmApp'
 import YouTubeApp from '../apps/YouTubeApp'
+import PaintApp from '../apps/PaintApp'
 
 export default function Desktop() {
   const { windows, startMenuOpen } = useOSStore()
@@ -33,6 +34,7 @@ export default function Desktop() {
       case 'calendar': return <CalendarApp />
       case 'alarm': return <AlarmApp />
       case 'youtube': return <YouTubeApp />
+      case 'paint': return <PaintApp />
       default: return <div className="p-4 text-sm">Unknown app</div>
     }
   }
@@ -195,6 +197,21 @@ export default function Desktop() {
         icon={<img src="/youtube-icon.ico" alt="YouTube" width={40} height={40} style={{ imageRendering: 'pixelated' }} />}
         appId="youtube"
         title="YouTube"
+      />
+      <DesktopIcon
+        id="paint"
+        label="Paint"
+        icon={
+          <svg width="40" height="40" viewBox="0 0 40 40" className="pixelated" aria-hidden>
+            <rect x="6" y="22" width="28" height="12" fill="#E7E1DA" stroke="#000" strokeWidth="1.5" />
+            <rect x="14" y="6" width="12" height="18" fill="#C9B3F2" stroke="#000" strokeWidth="1.5" />
+            <rect x="16" y="8" width="8" height="6" fill="#E9B6D8" />
+            <circle cx="10" cy="18" r="3" fill="#F5CF72" stroke="#000" strokeWidth="1" />
+            <circle cx="30" cy="18" r="3" fill="#75D5DC" stroke="#000" strokeWidth="1" />
+          </svg>
+        }
+        appId="paint"
+        title="Paint"
       />
       <DesktopIcon
         id="recycle"
