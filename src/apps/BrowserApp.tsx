@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-type PageKey = 'home' | 'dreamwave.local' | 'pixelclub.local' | 'midnight.fm' | 'diary2002.local'
+type PageKey = 'home' | 'dreamwave.local' | 'pixelclub.local' | 'midnight.fm' | 'diary2002.local' | 'retro-web'
 
 const PAGES: Record<PageKey, { title: string; content: React.ReactNode }> = {
   home: {
@@ -83,6 +83,25 @@ const PAGES: Record<PageKey, { title: string; content: React.ReactNode }> = {
       </div>
     )
   },
+  'retro-web': {
+    title: 'Bored.com — Retro Web Category',
+    content: (
+      <div className="p-3 space-y-2">
+        <h1 className="text-xl font-bold text-[#000080]">Retro Web Picks (from Bored.com)</h1>
+        <p className="text-sm">A curated corner of nostalgic websites. Visit the original page: <span className="underline text-blue-800">https://www.bored.com/category/retro-web/</span></p>
+        <div className="border border-[#808080] bg-[#E7E1DA] p-2 text-sm">
+          <div className="font-bold mb-1">Suggested stops:</div>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Classic Flash game archives</li>
+            <li>Old web art &amp; pixel galleries</li>
+            <li>GeoCities-style throwbacks</li>
+            <li>Retro internet quizzes and toys</li>
+          </ul>
+        </div>
+        <div className="text-[11px] text-gray-600">Note: This is a mock page inside MyLife.exe’s retro browser.</div>
+      </div>
+    )
+  },
 }
 
 export default function BrowserApp() {
@@ -125,7 +144,7 @@ export default function BrowserApp() {
       </div>
       <div className="text-[11px] mb-1 flex gap-2 flex-wrap">
         <span className="text-gray-600">Bookmarks:</span>
-        {(['dreamwave.local','pixelclub.local','midnight.fm','diary2002.local'] as PageKey[]).map(b => (
+        {(['dreamwave.local','pixelclub.local','midnight.fm','diary2002.local','retro-web'] as PageKey[]).map(b => (
           <button key={b} className="underline text-blue-800" onClick={() => navigate(b)}>{b}</button>
         ))}
       </div>
