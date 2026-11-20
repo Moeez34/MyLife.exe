@@ -194,7 +194,7 @@ export default function Desktop() {
       <DesktopIcon
         id="youtube"
         label="YouTube"
-        icon={<img src="/youtube-icon.png" alt="YouTube" width={40} height={40} style={{ imageRendering: 'pixelated' }} />}
+        icon={<img src="/youtube-icon.ico" alt="YouTube" width={40} height={40} style={{ imageRendering: 'pixelated' }} />}
         appId="youtube"
         title="YouTube"
       />
