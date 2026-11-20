@@ -75,7 +75,8 @@ export default function NotesApp() {
             className="retro-input mb-1"
             value={title}
             onChange={e => setTitle(e.target.value)}
-            placeholder="Title"
+            onFocus={() => { if (title === 'Untitled') setTitle('') }}
+            placeholder="Title (Untitled)"
           />
           <textarea
             className="retro-input flex-1 resize-none"
