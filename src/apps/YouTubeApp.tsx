@@ -119,7 +119,7 @@ export default function YouTubeApp() {
             <div className="space-y-2">
               {classicVideos.map(v => (
                 <div key={v.videoId} className="flex gap-2 bg-white border border-[#ccc] p-2 cursor-pointer hover:border-[#999]" onClick={() => openVideo(v)}>
-                  <img src={v.thumbnail} alt="" className="w-[120px] h-[90px] object-cover" />
+                  <img src={v.thumbnail} alt="" className="w-[120px] h-[90px] object-cover" loading="lazy" decoding="async" />
                   <div className="min-w-0">
                     <div className="text-[#0033cc] font-bold text-sm">{v.title}</div>
                     <div className="text-[11px] text-[#666]">{v.channelTitle}</div>
@@ -142,7 +142,7 @@ export default function YouTubeApp() {
             <div className="space-y-2">
               {searchResults.map(v => (
                 <div key={v.videoId} className="flex gap-2 bg-white border border-[#ccc] p-2 cursor-pointer hover:border-[#999]" onClick={() => openVideo(v)}>
-                  {v.thumbnail && <img src={v.thumbnail} alt="" className="w-[120px] h-[90px] object-cover" />}
+                  {v.thumbnail && <img src={v.thumbnail} alt="" className="w-[120px] h-[90px] object-cover" loading="lazy" decoding="async" />}
                   <div className="min-w-0">
                     <div className="text-[#0033cc] font-bold text-sm">{v.title}</div>
                     <div className="text-[11px] text-[#666]">{v.channelTitle}</div>
@@ -217,7 +217,7 @@ export default function YouTubeApp() {
             <div className="space-y-2">
               {favorites.map(v => (
                 <div key={v.videoId} className="flex gap-2 bg-white border border-[#ccc] p-2">
-                  {v.thumbnail && <img src={v.thumbnail} alt="" className="w-[100px] h-[75px] object-cover cursor-pointer" onClick={() => openVideo(v)} />}
+                  {v.thumbnail && <img src={v.thumbnail} alt="" className="w-[100px] h-[75px] object-cover cursor-pointer" loading="lazy" decoding="async" onClick={() => openVideo(v)} />}
                   <div className="flex-1 min-w-0">
                     <div className="text-[#0033cc] font-bold text-sm cursor-pointer" onClick={() => openVideo(v)}>{v.title}</div>
                     <div className="text-[11px] text-[#666]">{v.channelTitle}</div>
@@ -255,7 +255,7 @@ export default function YouTubeApp() {
             <div className="space-y-2">
               {history.map(v => (
                 <div key={v.videoId + v.watchedAt} className="flex gap-2 bg-white border border-[#ccc] p-2">
-                  {v.thumbnail && <img src={v.thumbnail} alt="" className="w-[100px] h-[75px] object-cover cursor-pointer" onClick={() => openVideo(v)} />}
+                  {v.thumbnail && <img src={v.thumbnail} alt="" className="w-[100px] h-[75px] object-cover cursor-pointer" loading="lazy" decoding="async" onClick={() => openVideo(v)} />}
                   <div className="flex-1 min-w-0">
                     <div className="text-[#0033cc] font-bold text-sm cursor-pointer" onClick={() => openVideo(v)}>{v.title}</div>
                     <div className="text-[11px] text-[#666]">{v.channelTitle}</div>
