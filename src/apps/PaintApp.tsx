@@ -66,13 +66,13 @@ export default function PaintApp() {
     ctx.fillRect(0, 0, canvas.width, canvas.height)
   }
 
-  const toolBtn = (id: typeof tool, label: string) => (
+  const toolBtn = (id: typeof tool, label: string, icon: React.ReactNode) => (
     <button
-      className={`w-8 h-8 border text-[10px] ${tool === id ? 'border-2 border-black bg-[#c0c0c0]' : 'border border-[#808080] bg-[#e0e0e0]'}`}
+      className={`w-8 h-8 border flex items-center justify-center ${tool === id ? 'border-2 border-black bg-[#c0c0c0]' : 'border border-[#808080] bg-[#e0e0e0]'}`}
       onClick={() => setTool(id)}
       title={label}
     >
-      {label.slice(0, 2)}
+      {icon}
     </button>
   )
 
@@ -90,10 +90,16 @@ export default function PaintApp() {
       <div className="flex flex-1 min-h-0">
         {/* Toolbox */}
         <div className="w-12 border-r border-[#808080] bg-[#d4d0c8] p-1 flex flex-col gap-1">
-          {toolBtn('pencil', 'Pencil')}
-          {toolBtn('brush', 'Brush')}
-          {toolBtn('eraser', 'Eraser')}
-          <button className="w-8 h-8 border border-[#808080] bg-[#e0e0e0] text-[9px]" onClick={clearCanvas} title="Clear">Clr</button>
+          {toolBtn('pencil', 'Pencil', (
+            <svg width="16" height="16" viewBox="0 0 16 16"><rect x="2" y="10" width="8" height="3" fill="#F5CF72" stroke="#000" strokeWidth="0.5"/><rect x="9" y="3" width="4" height="8" fill="#C9B3F2" stroke="#000" strokeWidth="0.5" transform="rotate(45 11 7)"/></svg>
+          ))}
+          {toolBtn('brush', 'Brush', (
+            <svg width="16" height="16" viewBox="0 0 16 16"><rect x="3" y="2" width="10" height="4" fill="#E9B6D8" stroke="#000" strokeWidth="0.5"/><rect x="6" y="6" width="4" height="7" fill="#8B4513" stroke="#000" strokeWidth="0.5"/></svg>
+          ))}
+          {toolBtn('eraser', 'Eraser', (
+            <svg width="16" height="16" viewBox="0 0 16 16"><rect x="2" y="6" width="10" height="6" fill="#E7E1DA" stroke="#000" strokeWidth="0.5"/><rect x="8" y="4" width="6" height="4" fill="#ffb6c1" stroke="#000" strokeWidth="0.5"/></svg>
+          ))}
+          <button className="w-8 h-8 border border-[#808080] bg-[#e0e0e0] text-[8px] leading-none" onClick={clearCanvas} title="Clear">CLR</button>
         </div>
         {/* Canvas area */}
         <div className="flex-1 overflow-auto bg-[#808080] p-2">
