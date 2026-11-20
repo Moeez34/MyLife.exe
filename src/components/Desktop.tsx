@@ -11,6 +11,9 @@ import MusicApp from '../apps/MusicApp'
 import BrowserApp from '../apps/BrowserApp'
 import ExplorerApp from '../apps/ExplorerApp'
 import RecycleBinApp from '../apps/RecycleBinApp'
+import CalculatorApp from '../apps/CalculatorApp'
+import CalendarApp from '../apps/CalendarApp'
+import AlarmApp from '../apps/AlarmApp'
 
 export default function Desktop() {
   const { windows, startMenuOpen } = useOSStore()
@@ -25,6 +28,9 @@ export default function Desktop() {
       case 'browser': return <BrowserApp />
       case 'explorer': return <ExplorerApp />
       case 'recycle': return <RecycleBinApp />
+      case 'calculator': return <CalculatorApp />
+      case 'calendar': return <CalendarApp />
+      case 'alarm': return <AlarmApp />
       default: return <div className="p-4 text-sm">Unknown app</div>
     }
   }
@@ -139,6 +145,57 @@ export default function Desktop() {
         }
         appId="browser"
         title="Internet.exe"
+      />
+      <DesktopIcon
+        id="calculator"
+        label="Calculator"
+        icon={
+          <svg width="40" height="40" viewBox="0 0 40 40" className="pixelated" aria-hidden>
+            <rect x="8" y="4" width="24" height="32" fill="#E7E1DA" stroke="#000" strokeWidth="1.5" />
+            <rect x="11" y="7" width="18" height="6" fill="#fff" stroke="#000" strokeWidth="1" />
+            <rect x="11" y="16" width="4" height="4" fill="#C9B3F2" stroke="#000" strokeWidth="1" />
+            <rect x="18" y="16" width="4" height="4" fill="#C9B3F2" stroke="#000" strokeWidth="1" />
+            <rect x="25" y="16" width="4" height="4" fill="#C9B3F2" stroke="#000" strokeWidth="1" />
+            <rect x="11" y="23" width="4" height="4" fill="#C9B3F2" stroke="#000" strokeWidth="1" />
+            <rect x="18" y="23" width="4" height="4" fill="#C9B3F2" stroke="#000" strokeWidth="1" />
+            <rect x="25" y="23" width="4" height="4" fill="#F5CF72" stroke="#000" strokeWidth="1" />
+          </svg>
+        }
+        appId="calculator"
+        title="Calculator"
+      />
+      <DesktopIcon
+        id="calendar"
+        label="Calendar"
+        icon={
+          <svg width="40" height="40" viewBox="0 0 40 40" className="pixelated" aria-hidden>
+            <rect x="6" y="8" width="28" height="26" fill="#fff" stroke="#000" strokeWidth="1.5" />
+            <rect x="6" y="8" width="28" height="6" fill="#E9B6D8" stroke="#000" strokeWidth="1" />
+            <rect x="12" y="4" width="3" height="6" fill="#000" />
+            <rect x="25" y="4" width="3" height="6" fill="#000" />
+            <rect x="10" y="18" width="4" height="4" fill="#75D5DC" />
+            <rect x="18" y="18" width="4" height="4" fill="#75D5DC" />
+            <rect x="26" y="18" width="4" height="4" fill="#75D5DC" />
+          </svg>
+        }
+        appId="calendar"
+        title="Calendar"
+      />
+      <DesktopIcon
+        id="alarm"
+        label="Alarm"
+        icon={
+          <svg width="40" height="40" viewBox="0 0 40 40" className="pixelated" aria-hidden>
+            <circle cx="20" cy="22" r="12" fill="#E7E1DA" stroke="#000" strokeWidth="1.5" />
+            <circle cx="20" cy="22" r="9" fill="#fff" stroke="#000" strokeWidth="1" />
+            <line x1="20" y1="22" x2="20" y2="15" stroke="#000" strokeWidth="1.5" />
+            <line x1="20" y1="22" x2="25" y2="22" stroke="#000" strokeWidth="1.5" />
+            <rect x="8" y="8" width="6" height="4" fill="#C9B3F2" stroke="#000" strokeWidth="1" transform="rotate(-30 11 10)" />
+            <rect x="26" y="8" width="6" height="4" fill="#C9B3F2" stroke="#000" strokeWidth="1" transform="rotate(30 29 10)" />
+          </svg>
+        }
+        appId="alarm"
+        title="Alarm"
       />
       <DesktopIcon
         id="recycle"

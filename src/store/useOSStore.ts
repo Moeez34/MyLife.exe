@@ -11,6 +11,9 @@ export type AppId =
   | 'explorer'
   | 'recycle'
   | 'mycomputer'
+  | 'calculator'
+  | 'calendar'
+  | 'alarm'
 
 export interface WindowState {
   id: string
@@ -64,7 +67,10 @@ const defaultIconPositions: IconPos[] = [
   { id: 'memories', x: 20, y: 380 },
   { id: 'music', x: 20, y: 470 },
   { id: 'browser', x: 20, y: 560 },
-  { id: 'recycle', x: 20, y: 650 },
+  { id: 'calculator', x: 20, y: 650 },
+  { id: 'calendar', x: 120, y: 20 },
+  { id: 'alarm', x: 120, y: 110 },
+  { id: 'recycle', x: 120, y: 200 },
 ]
 
 export const useOSStore = create<OSState>()(
