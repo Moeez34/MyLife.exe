@@ -13,7 +13,7 @@ export default function AppWindow({ win, children }: Props) {
   const winRef = useRef<HTMLDivElement>(null)
 
   const onMouseDownTitle = (e: React.MouseEvent) => {
-    if (win.maximized) return
+    if (win.maximized || (typeof window !== 'undefined' && window.innerWidth < 768)) return
     e.preventDefault()
     focusWindow(win.id)
     setDragging(true)
@@ -40,7 +40,8 @@ export default function AppWindow({ win, children }: Props) {
 
   if (win.minimized) return null
 
-  const style: React.CSSProperties = win.maximized
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const style: React.CSSProperties = (win.maximized || isMobile)
     ? { left: 0, top: 0, width: '100%', height: 'calc(100% - 40px)', zIndex: win.zIndex }
     : { left: win.x, top: win.y, width: win.width, height: win.height, zIndex: win.zIndex }
 

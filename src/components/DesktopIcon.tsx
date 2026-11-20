@@ -32,6 +32,7 @@ export default function DesktopIcon({ id, label, icon, appId, title }: Props) {
   const offset = useRef({ x: 0, y: 0 })
 
   const onMouseDown = (e: React.MouseEvent) => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return
     e.preventDefault()
     setSelected(true)
     setDragging(true)
