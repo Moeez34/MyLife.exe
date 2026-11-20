@@ -1,6 +1,21 @@
 import { useRef, useState, useEffect } from 'react'
 import { useOSStore, AppId } from '../store/useOSStore'
 
+const defaultPosMap: Record<string, { x: number; y: number }> = {
+  mycomputer: { x: 20, y: 20 },
+  buddy: { x: 20, y: 110 },
+  notes: { x: 20, y: 200 },
+  goals: { x: 20, y: 290 },
+  memories: { x: 20, y: 380 },
+  music: { x: 20, y: 470 },
+  browser: { x: 20, y: 560 },
+  calculator: { x: 20, y: 650 },
+  youtube: { x: 120, y: 290 },
+  calendar: { x: 120, y: 20 },
+  alarm: { x: 120, y: 110 },
+  recycle: { x: 120, y: 200 },
+}
+
 interface Props {
   id: AppId | 'mycomputer' | 'recycle'
   label: string
@@ -11,7 +26,7 @@ interface Props {
 
 export default function DesktopIcon({ id, label, icon, appId, title }: Props) {
   const { iconPositions, setIconPos, openApp } = useOSStore()
-  const pos = iconPositions.find(p => p.id === id) || { x: 20, y: 20 }
+  const pos = iconPositions.find(p => p.id === id) || defaultPosMap[id] || { x: 20, y: 20 }
   const [dragging, setDragging] = useState(false)
   const [selected, setSelected] = useState(false)
   const offset = useRef({ x: 0, y: 0 })
